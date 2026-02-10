@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { X, Bell, Check } from 'lucide-react';
+import { X, Bell, Check, AlertTriangle, AlertCircle, Info } from 'lucide-react';
 import styles from './TaskToast.module.css';
 
-const TaskToast = ({ message, title = 'Thông báo', onClose, duration = 5000, showConfirmButton = false }) => {
+const TaskToast = ({ message, title = 'Thông báo', onClose, duration = 4000, type = 'info', showConfirmButton = false }) => {
     const [isExiting, setIsExiting] = useState(false);
 
     useEffect(() => {
@@ -20,16 +20,37 @@ const TaskToast = ({ message, title = 'Thông báo', onClose, duration = 5000, s
         setTimeout(onClose, 300); // Match CSS animation time
     };
 
+    const getIcon = () => {
+        switch (type) {
+            case 'success': return <Check size={16} />;
+            case 'warning': return <AlertTriangle size={16} />;
+            case 'error': return <AlertCircle size={16} />;
+            case 'info': default: return <Bell size={16} />;
+        }
+    };
+
+    const renderText = (text) => {
+        if (!text) return '';
+        // Split by markdown bold markers **text**
+        const parts = text.split(/(\*\*.*?\*\*)/g);
+        return parts.map((part, i) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+                return <strong key={i}>{part.slice(2, -2)}</strong>;
+            }
+            return part;
+        });
+    };
+
     return (
         <div className={`${styles.toastWrapper} ${isExiting ? styles.exit : styles.enter}`}>
-            <div className={`${styles.toastContainer} ${showConfirmButton ? styles.welcomeToast : ''}`}>
+            <div className={`${styles.toastContainer} ${styles[type]} ${showConfirmButton ? styles.welcomeToast : ''}`}>
                 <div className={styles.iconCircle}>
-                    <Bell size={20} className={styles.bellIcon} />
+                    {getIcon()}
                 </div>
 
                 <div className={styles.toastBody}>
                     <h4 className={styles.toastTitle}>{title}</h4>
-                    <p className={styles.toastMessage}>{message}</p>
+                    <p className={styles.toastMessage}>{renderText(message)}</p>
 
                     {showConfirmButton && (
                         <button className={styles.confirmBtn} onClick={handleClose}>
@@ -41,7 +62,7 @@ const TaskToast = ({ message, title = 'Thông báo', onClose, duration = 5000, s
 
                 {!showConfirmButton && (
                     <button className={styles.closeBtn} onClick={handleClose}>
-                        <X size={18} />
+                        <X size={16} />
                     </button>
                 )}
             </div>

@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useRef, useCallb
 import * as firestoreAPI from '../services/firestoreAPI';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import TaskToast from '../components/UI/TaskToast';
 
 const AppStateContext = createContext();
 
@@ -2310,11 +2311,87 @@ export const AppStateProvider = ({ children }) => {
         stores
     ]);
 
+
+
+    // Toast Notification Logic for real-time updates
+    useEffect(() => {
+        if (isLoading || !user || notifications.length === 0) return;
+
+        // Sort by time descending to get the absolute latest
+        const sorted = [...notifications].sort((a, b) => {
+            const getTs = (t) => {
+                const time = t.createdAt || t.time; // Fallback
+                if (!time) return 0;
+                if (time.seconds) return time.seconds * 1000;
+                if (time.toMillis) return time.toMillis();
+                if (time instanceof Date) return time.getTime();
+                return new Date(time).getTime();
+            };
+            return getTs(b) - getTs(a);
+        });
+
+        const latest = sorted[0];
+        if (!latest) return;
+
+        // Avoid showing same toast twice
+        if (lastNotifIdRef.current === latest.id) return;
+
+        // Helper to check if it's "fresh" (e.g. created in last 20 seconds)
+        // This prevents old notifications from popping up on page refresh
+        const getTimestamp = (t) => {
+            const time = t.createdAt;
+            if (!time) return 0;
+            if (time.seconds) return time.seconds * 1000;
+            if (time.toMillis) return time.toMillis();
+            if (time instanceof Date) return time.getTime();
+            return new Date(time).getTime();
+        };
+
+        const now = Date.now();
+        const createdTime = getTimestamp(latest);
+        const isFresh = (now - createdTime) < 20000; // 20 seconds window
+
+        if (latest.id !== lastNotifIdRef.current) {
+            lastNotifIdRef.current = latest.id;
+
+            if (isFresh) {
+                // Check if relevant to current user
+                // const isForMe = latest.targetUserEmail === user.email || (latest.message && latest.message.includes(user.name));
+                // Actually, if filter logic in subscription already filters, then all are for me.
+                // But firestoreAPI.subscribeToNotifications gets ALL notifications collection usually.
+                // Assuming it gets all, we need filter.
+
+                const isRelavant =
+                    latest.targetUserEmail === user.email ||
+                    (latest.message && latest.message.includes(user.name)) ||
+                    latest.type === 'task-broadcast'; // Example broadcast type
+
+                if (isRelavant) {
+                    let toastType = 'info';
+                    if (latest.type === 'task-complete') toastType = 'success';
+                    if (latest.type === 'warning') toastType = 'warning';
+
+                    // Show toast
+                    showToast(latest.message, latest.title, { type: toastType, duration: 6000 });
+                }
+            }
+        }
+    }, [notifications, user, isLoading, showToast]);
+
     console.log('AppStateProvider initializing, isLoading:', isLoading);
 
     return (
         <AppStateContext.Provider value={contextValue}>
             {children}
+            {toast && (
+                <TaskToast
+                    message={toast.message}
+                    title={toast.title}
+                    type={toast.type || 'info'}
+                    duration={toast.duration || 5000}
+                    onClose={() => setToast(null)}
+                />
+            )}
         </AppStateContext.Provider>
     );
 };

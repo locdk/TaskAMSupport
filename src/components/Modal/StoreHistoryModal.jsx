@@ -71,9 +71,10 @@ const StoreHistoryModal = ({ isOpen, onClose }) => {
             const parts = line.split(/(\*\*.*?\*\*)/g);
             const content = parts.map((part, pIdx) => {
                 if (part.startsWith('**') && part.endsWith('**')) {
-                    return <strong key={pIdx} className={styles.highlight}>{part.slice(2, -2)}</strong>;
+                    const contentStr = part.slice(2, -2);
+                    return <strong key={pIdx} className={styles.highlight}>{contentStr}</strong>;
                 }
-                return part;
+                return <span key={pIdx}>{part}</span>;
             });
 
             if (idx === 0) {

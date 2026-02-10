@@ -160,9 +160,10 @@ const ActivityHistory = () => {
         const parts = text.split(/(\*\*.*?\*\*)/g);
         return parts.map((part, i) => {
             if (part.startsWith('**') && part.endsWith('**')) {
-                return <strong key={i} style={{ color: 'var(--primary)' }}>{part.slice(2, -2)}</strong>;
+                const content = part.slice(2, -2);
+                return <strong key={i} style={{ color: 'var(--primary)' }}>{content}</strong>;
             }
-            return part;
+            return <span key={i}>{part}</span>;
         });
     };
 

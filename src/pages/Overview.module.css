@@ -111,6 +111,7 @@
 .statsRow {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
     gap: clamp(12px, 1.5vw, 20px);
 }
 
