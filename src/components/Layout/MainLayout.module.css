@@ -1,0 +1,118 @@
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    color: var(--text-primary);
+}
+
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-primary);
+    /* Ensure main bg is deep dark */
+}
+
+.header {
+    height: 72px;
+    /* Slightly taller for premium feel */
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Changed to space-between for future left-side content */
+    padding: 0 var(--spacing-xl);
+    border-bottom: 1px solid var(--bg-tertiary);
+    background-color: rgba(18, 18, 18, 0.8);
+    /* Semi-transparent */
+    backdrop-filter: blur(12px);
+    /* Glassmorphism */
+    z-index: 10;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.userProfile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+}
+
+.userProfile:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.userName {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.contentScroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-xl);
+    scroll-behavior: smooth;
+}
+
+@media print {
+    .header {
+        display: none !important;
+    }
+
+    .container {
+        display: block !important;
+        height: auto !important;
+        width: 100% !important;
+        overflow: visible !important;
+        background-color: #fff !important;
+    }
+
+    .mainContent {
+        display: block !important;
+        height: auto !important;
+        overflow: visible !important;
+        background-color: #fff !important;
+    }
+
+    .contentScroll {
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .contentScroll {
+        padding-bottom: 80px;
+        /* Space for bottom nav (60px) + Extra spacing */
+    }
+}

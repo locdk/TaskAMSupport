@@ -1,0 +1,658 @@
+/* Dark Mode Sidebar with new layout */
+.sidebar {
+    width: 260px;
+    height: 100%;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--bg-tertiary);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 24px 20px;
+    /* border-bottom: 1px solid var(--bg-tertiary); */
+    margin-bottom: 8px;
+}
+
+.brandIcon {
+    margin-right: 12px;
+}
+
+.gridIcon {
+    width: 36px;
+    height: 36px;
+    background: var(--gradient-primary);
+    /* Use gradient from old theme */
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 6px;
+    box-shadow: var(--shadow-sm);
+}
+
+.gridDot {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+}
+
+.brandInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.brandName {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.brandSubtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* Menu */
+.menuContainer {
+    flex: 1;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.menuContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
+.menuContainer::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.navIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    color: var(--text-tertiary);
+    transition: color 0.2s;
+}
+
+.navLabel {
+    flex: 1;
+}
+
+.navItem:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    transform: translateX(4px);
+}
+
+.navItem:hover .navIcon {
+    color: var(--text-primary);
+}
+
+.navItem.active {
+    background-color: var(--primary-bg);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.navItem.active .navIcon {
+    color: #40a9ff;
+}
+
+/* Active indicator strip */
+.navItem.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 16px;
+    background-color: #40a9ff;
+    border-radius: 0 4px 4px 0;
+}
+
+.divider {
+    height: 1px;
+    background-color: var(--bg-tertiary);
+    margin: 4px 0;
+}
+
+/* Footer (Profile) */
+.themeToggle,
+.logoutBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-tertiary);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+    position: relative;
+    z-index: 10;
+}
+
+.themeToggle:hover {
+    background-color: var(--bg-accent);
+    color: var(--primary);
+}
+
+.logoutBtn {
+    margin-left: 4px;
+}
+
+.logoutBtn:hover {
+    background-color: rgba(255, 77, 79, 0.1);
+    color: #ff4d4f;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border-top: 1px solid var(--bg-tertiary);
+    margin-top: auto;
+    background-color: var(--bg-tertiary);
+    gap: 4px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 8px;
+    overflow: hidden;
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.userInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.userName {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.userRole {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Online Status Section */
+.onlineStatusSection {
+    padding: 12px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    margin-top: auto;
+    /* Push to bottom if space available */
+    min-height: 120px;
+}
+
+.onlineStatusSection::-webkit-scrollbar {
+    width: 4px;
+}
+
+.onlineStatusSection::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+.teamGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.teamHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+}
+
+.teamTitle {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+}
+
+.onlineCount {
+    font-size: 10px;
+    color: #52c41a;
+    font-weight: 600;
+}
+
+.avatarGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px;
+}
+
+.onlineAvatarWrapper {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.onlineAvatarWrapper:hover {
+    transform: scale(1.1);
+    z-index: 100;
+}
+
+.onlineAvatarWrapper:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+}
+
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: var(--dropdown-bg);
+    backdrop-filter: blur(8px);
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    max-width: 140px;
+    /* Limit width */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    box-shadow: var(--dropdown-shadow);
+    border: 1px solid var(--dropdown-border);
+    z-index: 101;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(30, 30, 35, 0.95) transparent transparent transparent;
+}
+
+.onlineAvatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1.5px solid var(--bg-primary);
+    background-color: var(--bg-tertiary);
+}
+
+.statusDot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #52c41a;
+    border-radius: 50%;
+    border: 1.5px solid var(--bg-secondary);
+    box-shadow: 0 0 4px rgba(82, 196, 26, 0.4);
+}
+
+@media print {
+    .sidebar {
+        display: none !important;
+    }
+}
+
+.statusDotIdle {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #faad14;
+    border-radius: 50%;
+    border: 1.5px solid var(--bg-secondary);
+    box-shadow: 0 0 4px rgba(250, 173, 20, 0.4);
+}
+
+/* Mobile Toggle Button (Visible only on mobile) */
+.mobileToggle {
+    display: none;
+    position: fixed;
+    top: 16px;
+    /* Match header padding */
+    left: 16px;
+    z-index: 999;
+    background-color: rgba(30, 30, 35, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay for mobile when sidebar is open */
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+}
+
+/* Close button inside sidebar (Mobile only) */
+.closeBtn {
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+}
+
+/* Bottom Nav (Hidden by default, shown on mobile) */
+.bottomNav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--bg-secondary);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--bg-tertiary);
+    z-index: 1000;
+    padding: 0 8px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bottomNavItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 0;
+    flex: 1;
+    gap: 4px;
+    min-width: 60px;
+    transition: all 0.2s;
+    border-radius: 8px;
+}
+
+.bottomNavIcon {
+    width: 22px;
+    height: 22px;
+    transition: all 0.2s;
+}
+
+.bottomNavLabel {
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bottomNavItemActive {
+    color: #40a9ff;
+}
+
+.bottomNavItemActive .bottomNavIcon {
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablet and below (768px) */
+@media (max-width: 768px) {
+
+    /* Hide top toggle button since we have bottom nav now */
+    .mobileToggle {
+        display: none !important;
+    }
+
+    /* Show Bottom Nav */
+    .bottomNav {
+        display: flex;
+    }
+
+    /* Hide Sidebar completely (since we use bottom nav) */
+    /* Or if user wants BOTH (less likely), we can keep sidebar. 
+       But usually bottom nav replaces sidebar drawer for main nav. 
+       Let's hide sidebar drawer to act like "App" */
+    .sidebar {
+        display: none !important;
+    }
+
+    .overlay {
+        display: none !important;
+    }
+
+    .closeBtn {
+        display: none !important;
+    }
+
+    /* Reduce header padding */
+    .header {
+        padding: 16px;
+    }
+
+    /* ...keep other standard adjustments... */
+
+    .brandName {
+        font-size: 14px;
+    }
+
+    .brandSubtitle {
+        font-size: 11px;
+    }
+
+    /* Compact menu */
+    .menuContainer {
+        padding: 0 8px;
+    }
+
+    .navItem {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .navIcon {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+    }
+
+    /* Compact online status section */
+    .onlineStatusSection {
+        padding: 8px;
+    }
+
+    /* ... */
+
+
+    .teamTitle {
+        font-size: 9px;
+    }
+
+    .onlineCount {
+        font-size: 9px;
+    }
+
+    .avatarGrid {
+        gap: 6px;
+        padding: 2px;
+    }
+
+    .onlineAvatar {
+        width: 26px;
+        height: 26px;
+    }
+
+    .statusDot,
+    .statusDotIdle {
+        width: 6px;
+        height: 6px;
+    }
+
+    /* Compact footer */
+    .footer {
+        padding: 12px 16px;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .userName {
+        font-size: 13px;
+    }
+
+    .userRole {
+        font-size: 11px;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 240px;
+        left: -240px;
+    }
+
+    .header {
+        padding: 12px;
+    }
+
+    .brandIcon {
+        margin-right: 8px;
+    }
+
+    .gridIcon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .brandName {
+        font-size: 13px;
+    }
+
+    .brandSubtitle {
+        font-size: 10px;
+    }
+
+    .navItem {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+    .navIcon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+    }
+
+    /* Hide online status section on very small screens to save space */
+    .onlineStatusSection {
+        display: none;
+    }
+
+    .footer {
+        padding: 10px 12px;
+    }
+
+    .avatar {
+        width: 28px;
+        height: 28px;
+        margin-right: 8px;
+    }
+
+    .userName {
+        font-size: 12px;
+    }
+
+    .userRole {
+        font-size: 10px;
+    }
+}

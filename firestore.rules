@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // 1. Personnel (Critical Data)
+    // - Everyone can read to see team members
+    // - Only allow writes if authenticated (Ideally Admin only, but logic complex without custom claims)
+    match /personnel/{personId} {
+      allow read: if true; 
+      // Allow write if authenticated OR if performing first-time password setup (password is missing/null/empty)
+      allow write: if isAuthenticated() || 
+        ((!('password' in resource.data) || resource.data.password == null || resource.data.password == "") && 
+         request.resource.data.diff(resource.data).affectedKeys().hasOnly(['password', 'updatedAt']));
+    }
+
+    // 2. Tasks
+    // - Allow auth users to work with tasks
+    match /tasks/{taskId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 3. Attendance
+    // - Allow auth users to track attendance
+    match /attendance/{recordId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 4. Attendance History (Audit Logs)
+    // - Should not be deleted indiscriminately, but app logic requires it for "Clear Data" feature
+    match /attendanceHistory/{historyId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 5. System Configuration (Settings, Roles, Teams, etc.)
+    // - Critical configuration data
+    match /settings/{settingId} {
+      allow read: if true; // Public can see Branding/Logo on Login page
+      allow write: if isAuthenticated();
+    }
+    match /roles/{roleId} {
+      allow read: if true; // Needed for scripts and initial role checks
+      allow write: if isAuthenticated();
+    }
+    match /teams/{teamId} {
+      allow read, write: if isAuthenticated();
+    }
+    match /taskStatuses/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    match /taskPriorities/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    match /taskTypes/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    match /designTaskTypes/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    match /shiftDefinitions/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    
+    // 6. Notifications
+    match /notifications/{notifId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 8. Knowledge Hub
+    match /knowledge/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    match /knowledgeCategories/{id} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 9. Stores (Sổ tay tiệm)
+    match /stores/{id} {
+      allow read, write: if isAuthenticated();
+    }
+    match /storeLogs/{id} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // 7. Legacy Users collection (if used)
+    match /users/{userId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // GENERIC FALLBACK: Deny unauthenticated access to anything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

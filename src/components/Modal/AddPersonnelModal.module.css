@@ -1,0 +1,427 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal {
+    background-color: #1a1b22;
+    width: 100%;
+    max-width: 560px;
+    max-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.header {
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleGroup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconBox {
+    width: 44px;
+    height: 44px;
+    background-color: var(--primary-bg);
+    color: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.header p {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+
+.closeBtn {
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.closeBtn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.form {
+    padding: 32px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.form::-webkit-scrollbar {
+    width: 6px;
+}
+
+.form::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.form::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.form::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Avatar Section */
+.avatarSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.avatarPreview {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #0d0e12;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.avatarPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatarPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.uploadOverlay {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+.avatarPreview:hover .uploadOverlay {
+    opacity: 1;
+    bottom: 0;
+}
+
+.avatarInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatarLabel {
+    font-weight: 700;
+    color: #fff;
+    font-size: 14px;
+}
+
+.avatarHint {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 4px;
+}
+
+/* Grid & Form Groups */
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.required {
+    color: #ff4d4f;
+}
+
+.inputWrapper,
+.selectWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 14px;
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
+
+.inputWrapper input,
+.selectWrapper select {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 14px 12px 42px;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.inputWrapper input:focus,
+.selectWrapper select:focus {
+    border-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.1);
+}
+
+.selectWrapper select {
+    appearance: none;
+    cursor: pointer;
+}
+
+.dropdownIcon {
+    position: absolute;
+    right: 14px;
+    color: var(--text-tertiary);
+    pointer-events: none;
+}
+
+/* Enhanced dropdown options styling */
+.selectWrapper select option {
+    background: #1a1f3a;
+    color: #ffffff;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.selectWrapper select option:hover {
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(0, 100, 255, 0.3));
+    color: #60a5fa;
+}
+
+.selectWrapper select option:checked,
+.selectWrapper select option:focus {
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.3), rgba(0, 100, 255, 0.4));
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+.selectWrapper select option[disabled] {
+    color: rgba(255, 255, 255, 0.4);
+    font-style: italic;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 40px;
+}
+
+.cancelBtn {
+    padding: 12px 24px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cancelBtn:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+.submitBtn {
+    padding: 12px 32px;
+    background: linear-gradient(135deg, var(--primary) 0%, #0066ff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 8px 16px rgba(0, 102, 255, 0.2);
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0, 102, 255, 0.3);
+}
+
+.submitBtn:active {
+    transform: translateY(0);
+}
+
+.spin {
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Schedule Section */
+.scheduleSection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.daySelector,
+.shiftSelector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dayBtn,
+.shiftBtn {
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 50px;
+}
+
+.dayBtn:hover,
+.shiftBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dayBtnActive {
+    background-color: rgba(82, 196, 26, 0.1) !important;
+    border-color: #52c41a !important;
+    color: #52c41a !important;
+}
+
+.dayBtnSelected {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px var(--primary-bg);
+    transform: translateY(-2px);
+}
+
+.dayShiftLabel {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.dayName {
+    font-size: 14px;
+}
+
+.shiftBtnActive {
+    background-color: var(--primary-bg);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.shiftSelector {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}

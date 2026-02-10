@@ -1,0 +1,766 @@
+/* Main Container with Animated Background */
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(0, 150, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 200, 0, 0.1) 0%, transparent 50%);
+    animation: backgroundShift 20s ease infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundShift {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-5%, -5%);
+    }
+}
+
+/* Header Layout */
+.header {
+    padding: 32px 48px 24px;
+    position: relative;
+    z-index: 50;
+    margin-bottom: 24px;
+}
+
+.headerTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.titleGroup h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #ffffff 0%, #a0aec0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.headerOptions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Centered Search */
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 14px 20px 14px 52px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 15px;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.searchInput:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 150, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(0, 150, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon Action Button (Trash, etc) */
+.iconActionBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.iconActionBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.iconActionBtn.active {
+    background: rgba(255, 77, 79, 0.15);
+    color: #ff4d4f;
+    border-color: rgba(255, 77, 79, 0.3);
+    box-shadow: 0 0 15px rgba(255, 77, 79, 0.2);
+}
+
+/* Add Button */
+.addBtn {
+    height: 44px;
+    padding: 0 24px;
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(0, 100, 255, 0.3));
+    color: #60a5fa;
+    border: 1px solid rgba(0, 150, 255, 0.4);
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.1);
+}
+
+.addBtn:hover {
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.3), rgba(0, 100, 255, 0.4));
+    border-color: rgba(0, 150, 255, 0.6);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.3);
+}
+
+.iconRel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ff4d4f;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    height: 16px;
+    min-width: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0d0e12;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Make Trash button red border if items inside */
+.hasTrash {
+    border-color: rgba(255, 77, 79, 0.4);
+    background: rgba(255, 77, 79, 0.05);
+    color: #ff4d4f;
+}
+
+.hasTrash:hover {
+    background: rgba(255, 77, 79, 0.15);
+    border-color: rgba(255, 77, 79, 0.6);
+}
+
+/* Content Area */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
+    padding: 0 48px 48px 48px;
+    border: none;
+    position: relative;
+    z-index: 10;
+}
+
+.accordionList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 60px;
+}
+
+/* Glass Accordion Items */
+.accordionItem {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.accordionItem:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.accordionItem.expanded {
+    background: rgba(20, 25, 45, 0.6);
+    border-color: rgba(0, 150, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.accordionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordionTitle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.iconBox {
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.accordionItem:hover .iconBox {
+    color: #60a5fa;
+    background: rgba(0, 150, 255, 0.1);
+}
+
+.storeName {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.pendingTag {
+    font-size: 11px;
+    background: rgba(250, 173, 20, 0.15);
+    color: #faad14;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(250, 173, 20, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+.headerActions {
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(10px);
+}
+
+.accordionItem:hover .headerActions {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Action Buttons in Header */
+.actionBtn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.actionBtn:hover {
+    background: rgba(0, 150, 255, 0.2);
+    color: #60a5fa;
+    border-color: rgba(0, 150, 255, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 150, 255, 0.2);
+}
+
+.deleteBtn:hover {
+    background: rgba(255, 77, 79, 0.2);
+    color: #ff4d4f;
+    border-color: rgba(255, 77, 79, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 77, 79, 0.2);
+}
+
+.accordionBody {
+    padding: 0 24px 32px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.platformGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    padding-top: 24px;
+}
+
+/* Platform Cards - Glass Style */
+.platformCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.platformCard:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.platformHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.platformHeader h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Credential Rows */
+.credentialRow {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.credentialLabel {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.credentialValueGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.credentialValueGroup:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.credentialValue {
+    font-size: 13px;
+    color: #e6edf3;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-right: 12px;
+    line-height: 1.5;
+}
+
+.credentialActions {
+    display: flex;
+    gap: 6px;
+}
+
+.iconBtn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.iconBtn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Visit Button */
+.visitBtn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.visitBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Platform Specific Colors (Subtle Glows) */
+.fbColor {
+    color: #1877f2;
+}
+
+.instaColor {
+    color: #e1306c;
+}
+
+.mapsColor {
+    color: #34a853;
+}
+
+.yelpColor {
+    color: #d32323;
+}
+
+.otherColor {
+    color: #8b5cf6;
+}
+
+/* Security Badge with Pulse */
+.securityBadge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(82, 196, 26, 0.15);
+    color: #52c41a;
+    border: 1px solid rgba(82, 196, 26, 0.3);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 10px rgba(82, 196, 26, 0.2);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(82, 196, 26, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(82, 196, 26, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(82, 196, 26, 0);
+    }
+}
+
+/* Passcode Modal (Frosted Glass) */
+.passcodeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.passcodeModal {
+    background: rgba(26, 31, 58, 0.9);
+    padding: 32px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ... keep animation keyframes ... */
+@keyframes popIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.lockIcon {
+    color: #60a5fa;
+    background: rgba(0, 150, 255, 0.1);
+    padding: 16px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.2);
+}
+
+.passcodeHeader h3 {
+    margin: 0 0 8px 0;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.passcodeHeader p {
+    margin: 0 0 24px 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.passcodeForm {
+    width: 100%;
+}
+
+.passcodeInputWrapper {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.passcodeInput {
+    width: 100%;
+    padding: 16px;
+    font-size: 28px;
+    letter-spacing: 8px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.passcodeInput:focus {
+    border-color: #60a5fa;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 0 4px rgba(0, 150, 255, 0.15);
+}
+
+.inputError {
+    border-color: rgba(255, 77, 79, 0.5) !important;
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+.errorMsg {
+    color: #ff4d4f;
+    font-size: 12px;
+    margin-top: 8px;
+    display: block;
+}
+
+.passcodeActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.passcodeCancel,
+.passcodeSubmit {
+    height: 44px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.passcodeCancel {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.passcodeCancel:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.passcodeSubmit {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.passcodeSubmit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    filter: brightness(1.1);
+}
+
+/* Empty State */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    color: rgba(255, 255, 255, 0.3);
+    gap: 16px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.pageBtn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.pageBtn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.pageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: transparent;
+}
+
+.pageInfo {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}

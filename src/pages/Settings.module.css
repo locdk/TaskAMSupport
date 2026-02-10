@@ -1,0 +1,1047 @@
+.container {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    background-color: #0d0e12;
+    min-height: 100%;
+    max-width: 1000px;
+}
+
+.breadcrumb {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 8px;
+}
+
+.breadcrumb span:last-child {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.header {
+    margin-bottom: var(--spacing-md);
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.settingsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section {
+    background-color: #1a1b22;
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.section:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sectionTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 0;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionIcon {
+    color: var(--primary);
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formGroup label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.formGroup input,
+.formGroup textarea {
+    padding: 12px 16px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.1);
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.inputWrapper input {
+    width: 100%;
+}
+
+.lockIcon {
+    position: absolute;
+    right: 16px;
+    color: var(--text-tertiary);
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, 0.01) !important;
+}
+
+/* Logo Upload */
+.logoUploadContainer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 0;
+}
+
+.logoPreview {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.logoPreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logoUploadActions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.uploadBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--primary-bg);
+    color: var(--primary);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+}
+
+.uploadBtn:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.logoDesc {
+    font-size: 11px;
+    color: var(--text-tertiary);
+}
+
+/* Toggles */
+.toggleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 8px;
+}
+
+.toggleRow:last-child {
+    margin-bottom: 0;
+}
+
+.toggleRow:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.toggleLabel {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.iconWrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.labelContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.labelDesc {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.toggle {
+    width: 44px;
+    height: 24px;
+    background-color: #333;
+    border-radius: 12px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.on {
+    background-color: var(--primary);
+}
+
+.toggleHandle {
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.on .toggleHandle {
+    transform: translateX(20px);
+}
+
+/* Action Buttons */
+.actionGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.outlineBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.btnContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btnHint {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.statusBadge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+/* Footer & Save Btn */
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.saveBtn {
+    background: linear-gradient(135deg, var(--primary) 0%, #0066ff 100%);
+    color: #fff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 102, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.saveBtn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0, 102, 255, 0.3);
+}
+
+.saveBtn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.saveBtn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.saving {
+    background: #23272b !important;
+    box-shadow: none !important;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Configuration Grid (Status & Priority) */
+.configGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.configSection {
+    background-color: #1a1b22;
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.configHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.configTitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.titleIcon {
+    color: var(--primary);
+}
+
+.restoreBtn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.restoreBtn:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+}
+
+/* Draggable List */
+.cardList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.configCard {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dragging {
+    background-color: #232a35 !important;
+    border-color: var(--primary) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+    z-index: 1000;
+}
+
+.configCard:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.dragHandle {
+    color: rgba(255, 255, 255, 0.2);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+}
+
+.cardIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cardMain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cardInput {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.cardInput:focus {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-color: var(--primary);
+    outline: none;
+}
+
+.cardSub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    padding-left: 4px;
+}
+
+.cardPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.previewLabel {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+}
+
+.previewBadge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.addItemBtn {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    color: var(--text-secondary);
+    padding: 12px;
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.addItemBtn:hover {
+    border-color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* KPI Table */
+.kpiTableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.kpiHeader {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 1fr 0.5fr;
+    padding: 0 16px 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-tertiary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kpiRow {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 2fr 1fr 0.5fr;
+    padding: 16px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s;
+}
+
+.draggingRow {
+    background-color: #232a35 !important;
+    border-radius: 8px;
+    border: 1px solid var(--primary) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+    z-index: 1000;
+}
+
+.kpiRow:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.kpiTypeTag {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #fff;
+    margin-right: 12px;
+}
+
+.flexCenter {
+    display: flex;
+    align-items: center;
+}
+
+.colorPicker {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.colorCircle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+    opacity: 0.4;
+}
+
+.colorCircle.active {
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.pointsInput {
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    width: 60px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.actionIcons {
+    display: flex;
+    gap: 12px;
+    color: var(--text-tertiary);
+}
+
+.iconBtn:hover {
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Custom Color Selection */
+.colorSelectionRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-radius: 16px;
+    margin-top: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.colorPickerContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.colorOption {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.colorOption:hover {
+    transform: scale(1.1);
+}
+
+.activeColor {
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    transform: scale(1.2);
+}
+
+.customColorPicker {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.customColorPicker:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.colorInput {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.plusIcon {
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+/* System Config Custom Color Picker */
+.configCustomColorPicker {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.configCustomColorPicker:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Permission Selector Styles */
+.permissionLabelSection {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.permissionLabelText {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.permissionGroupsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.permissionGroupWrapper {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.permissionGroupHeader {
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.permissionGroupHeader:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.permissionGroupHeader.expanded {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.groupInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+}
+
+.groupInfo svg {
+    color: var(--primary);
+}
+
+.groupName {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.groupBadge {
+    background-color: var(--primary);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 50px;
+}
+
+.permissionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 10px;
+    padding: 16px;
+}
+
+.permissionItem {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.permissionItem:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.permissionItemActive {
+    background-color: rgba(24, 144, 255, 0.1) !important;
+    border-color: var(--primary) !important;
+}
+
+.permCheckbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.permissionItemActive .permCheckbox {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.permInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.permTitle {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.permDesc {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    line-height: 1.4;
+}
+
+.allPermsBadge {
+    background-color: #faad14;
+    color: #000;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.toast {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1890ff;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Maintenance Section */
+.dangerSection {
+    border-color: rgba(255, 77, 79, 0.2) !important;
+}
+
+.maintenanceActions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.maintenanceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background-color: rgba(255, 77, 79, 0.02);
+    border: 1px solid rgba(255, 77, 79, 0.1);
+    border-radius: 12px;
+}
+
+.maintenanceInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.maintenanceTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.maintenanceDesc {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.destructiveBtn {
+    background-color: rgba(255, 77, 79, 0.1);
+    color: #ff4d4f;
+    border: 1px solid rgba(255, 77, 79, 0.2);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.destructiveBtn:hover {
+    background-color: #ff4d4f;
+    color: #fff;
+    border-color: #ff4d4f;
+}
+
+/* Missing utility classes */
+.card {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: background-color 0.2s, border-color 0.2s;
+    margin-bottom: 12px;
+}
+
+.card:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.addBtn {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    color: var(--text-secondary);
+    padding: 14px;
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+    margin-top: 12px;
+}
+
+.addBtn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background-color: rgba(24, 144, 255, 0.05);
+}
+
+.deleteBtn {
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+    background-color: rgba(255, 77, 79, 0.1);
+    color: #ff4d4f;
+}

@@ -1,0 +1,125 @@
+:root {
+  /* Core Colors - Default to Dark Mode */
+  --bg-primary: #0b0d0f;
+  --bg-secondary: #161a1d;
+  --bg-tertiary: #23272b;
+  --bg-card: #1c2126;
+  --bg-card-hover: #21282f;
+  --bg-accent: rgba(24, 144, 255, 0.08);
+
+  /* Accents */
+  --primary: #1890ff;
+  --primary-hover: #40a9ff;
+  --primary-bg: rgba(24, 144, 255, 0.12);
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #505050;
+  --text-inverse: #121417;
+
+  /* Status Colors (Simulated System Settings) */
+  --tag-new-bg: rgba(255, 120, 117, 0.15);
+  --tag-new-text: #ff7875;
+  --tag-doing-bg: rgba(24, 144, 255, 0.12);
+  --tag-doing-text: #40a9ff;
+  --tag-pending-bg: rgba(255, 77, 79, 0.12);
+  --tag-pending-text: #ff4d4f;
+  --tag-done-bg: rgba(82, 196, 26, 0.12);
+  --tag-done-text: #52c41a;
+
+  /* Dropdown Styles */
+  --dropdown-bg: #23272b;
+  --dropdown-hover: #2c333a;
+  --dropdown-border: #363d44;
+  --dropdown-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+  /* Priority Colors (Simulated System Settings) */
+  --tag-p-high-bg: rgba(255, 77, 79, 0.15);
+  --tag-p-high-text: #ff4d4f;
+  --tag-p-medium-bg: rgba(250, 173, 20, 0.15);
+  --tag-p-medium-text: #faad14;
+  --tag-p-low-bg: rgba(255, 255, 255, 0.08);
+  --tag-p-low-text: #a0a0a0;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --header-height: 64px;
+}
+
+/* Light Mode Overrides */
+:root[data-theme='light'] {
+  /* Premium Light Neutrals */
+  --bg-primary: #f8fafc;
+  /* Slate 50 - Cleaner primary bg */
+  --bg-secondary: #ffffff;
+  /* Pure white for containers */
+  --bg-tertiary: #f1f5f9;
+  /* Slate 100 for subtle sections */
+  --bg-card: #ffffff;
+  --bg-card-hover: #fdfdfd;
+  --bg-accent: rgba(24, 144, 255, 0.08);
+
+  /* High Contrast Text */
+  --text-primary: #0f172a;
+  /* Slate 900 - Darker, richer text */
+  --text-secondary: #475569;
+  /* Slate 600 */
+  --text-tertiary: #94a3b8;
+  /* Slate 400 */
+  --text-inverse: #ffffff;
+
+  /* Refined Dropdowns & Popups */
+  --dropdown-bg: #ffffff;
+  --dropdown-hover: #f8fafc;
+  --dropdown-border: #e2e8f0;
+  /* Slate 200 */
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Enhanced Shadows for depth */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  /* Vibrant Tags for Light Mode */
+  --tag-new-bg: #fef2f2;
+  --tag-new-text: #ef4444;
+  /* More vibrant Red */
+  --tag-doing-bg: #eff6ff;
+  --tag-doing-text: #3b82f6;
+  /* More vibrant Blue */
+  --tag-pending-bg: #fff7ed;
+  --tag-pending-text: #f97316;
+  /* Orange for pending */
+  --tag-done-bg: #f0fdf4;
+  --tag-done-text: #22c55e;
+  /* More vibrant Green */
+
+  /* Priority Tags */
+  --tag-p-high-bg: #fff1f2;
+  --tag-p-high-text: #e11d48;
+  --tag-p-medium-bg: #fefce8;
+  --tag-p-medium-text: #ca8a04;
+  --tag-p-low-bg: #f1f5f9;
+  --tag-p-low-text: #64748b;
+}

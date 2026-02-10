@@ -1,0 +1,371 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 550px;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    color: #333;
+    border: 1px solid #e0e0e0;
+}
+
+.header {
+    padding: 10px 16px;
+    /* Reduced padding */
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    background: #f5f5f5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.headerActions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.closeBtn {
+    /* position: absolute; - Moved to container */
+    /* top: 16px; */
+    /* right: 16px; */
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.closeBtn:hover {
+    background-color: #ff4d4f;
+    color: #fff;
+    transform: none;
+    /* Removed rotation as it looks weird with 2 buttons */
+}
+
+.title {
+    font-size: 18px;
+    /* Reduced size */
+    font-weight: 900;
+    color: #000;
+    margin: 0 0 4px 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: none;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.body {
+    padding: 0;
+    overflow-y: auto;
+    flex: 1;
+    background-color: #fff;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 0;
+}
+
+.table th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    /* Reduced padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table td {
+    padding: 6px 16px;
+    /* Slightly increased padding */
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 13px;
+    /* Slightly increased font size */
+    font-weight: 500;
+    position: relative;
+    /* Crucial for dropdown positioning */
+}
+
+/* Zebra Striping */
+.table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.stt {
+    text-align: center;
+    width: 50px;
+    color: #888;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Reduced gap */
+}
+
+.avatar {
+    width: 24px;
+    /* Reduced size */
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+}
+
+.avatarFallback {
+    width: 24px;
+    /* Reduced size */
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #1890ff, #0050b3);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    border: 2px solid #444;
+}
+
+.role {
+    color: #237804;
+    /* Darker green for white bg */
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.shiftBadge {
+    display: inline-block;
+    padding: 2px 8px;
+    /* Restored padding */
+    border-radius: 12px;
+    /* Pill shape */
+    font-size: 11px;
+    /* Restored font size */
+    font-weight: 700;
+    min-width: 50px;
+    /* Restored min-width */
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Shift Colors - Vibrant & Solid */
+.shiftCa1 {
+    background: linear-gradient(45deg, #52c41a, #389e0d);
+    color: #fff;
+    border: none;
+}
+
+.shiftCa2 {
+    background: linear-gradient(45deg, #1890ff, #096dd9);
+    color: #fff;
+    border: none;
+}
+
+.shiftCa3 {
+    background: linear-gradient(45deg, #003a8c, #002766);
+    /* Dark Blue */
+    color: #fff;
+    border: none;
+}
+
+.shiftOFF {
+    background-color: #f5222d;
+    color: #fff;
+    border: 1px solid #cf1322;
+    font-weight: 700;
+}
+
+.shiftNP {
+    background-color: #fa541c;
+    /* Orange Red */
+    color: #fff;
+    border: 1px solid #ad2102;
+    font-weight: 700;
+}
+
+.shiftME {
+    background-color: #d4380d;
+    /* Volcano */
+    color: #fff;
+    border: 1px solid #871400;
+    font-weight: 700;
+}
+
+.shiftNL {
+    background-color: #eb2f96;
+    /* Magenta Red */
+    color: #fff;
+    border: 1px solid #78063a;
+    font-weight: 700;
+}
+
+.shiftOther {
+    background: linear-gradient(45deg, #fa8c16, #d46b08);
+    color: #fff;
+    border: none;
+}
+
+.shiftPending {
+    background: linear-gradient(45deg, #faad14, #d48806);
+    color: #fff;
+    border: none;
+    animation: pendingPulse 2s ease-in-out infinite;
+}
+
+@keyframes pendingPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.footer {
+    padding: 8px 16px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11px;
+    color: #aaa;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.btnDone {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.btnDone:hover {
+    background-color: #40a9ff;
+}
+
+.editableBadge {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.editableBadge:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(24, 144, 255, 0.5);
+}
+
+.statusDropdown {
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    /* Align with cell padding */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    /* High z-index */
+    min-width: 160px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+
+.statusDropdown.dropup {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 4px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdownItem {
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #333;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+    background-color: #e6f7ff;
+    color: #1890ff;
+}

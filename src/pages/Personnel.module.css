@@ -1,0 +1,563 @@
+.container {
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    background-color: var(--bg-primary);
+    min-height: 100%;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 32px;
+    border-bottom: 1px solid var(--bg-tertiary);
+    margin-top: 8px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 4px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.tabActive {
+    color: var(--primary);
+}
+
+.tabActive::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 3px 3px 0 0;
+}
+
+.count {
+    background: var(--bg-tertiary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.tabActive .count {
+    background: var(--primary);
+    color: #000;
+}
+
+/* Info Banner */
+.infoBanner {
+    background-color: var(--bg-accent);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.infoIcon {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+}
+
+.infoText {
+    color: var(--text-primary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.infoText strong {
+    font-weight: 700;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.searchWrapper {
+    position: relative;
+    flex: 1;
+    max-width: 500px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.searchInput {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 10px;
+    padding: 12px 16px 12px 48px;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.1);
+}
+
+.actionBtns {
+    display: flex;
+    gap: 12px;
+}
+
+.filterBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--dropdown-border);
+    padding: 10px 24px;
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.addBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--primary);
+    border: none;
+    padding: 10px 24px;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+}
+
+/* Table */
+.tableWrapper {
+    background-color: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--bg-tertiary);
+    overflow-x: auto;
+    /* Allow horizontal scroll */
+    margin-top: 8px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.th {
+    padding: 16px 24px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.td {
+    padding: 12px 24px;
+    color: var(--text-primary);
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.2s;
+    vertical-align: middle;
+    /* Cân đối theo chiều dọc */
+    white-space: nowrap;
+}
+
+tr:hover .td {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.stt {
+    color: var(--text-secondary);
+    font-size: 13px;
+    width: 60px;
+}
+
+.userCell {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatarWrapper {
+    position: relative;
+    display: flex;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    object-fit: cover;
+    background-color: #333;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.avatarInitial {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.onlineDot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background-color: #52c41a;
+    border: 3px solid #141414;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(82, 196, 26, 0.4);
+}
+
+.offlineDot {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background-color: #8c8c8c;
+    border: 3px solid #141414;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.userDetail {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.userRole {
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+/* Badges */
+.jobBadge {
+    display: inline-flex;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shiftBadge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid transparent;
+}
+
+.shift1 {
+    background: rgba(56, 158, 248, 0.1);
+    color: #389ef8;
+    border-color: rgba(56, 158, 248, 0.3);
+}
+
+.shift2 {
+    background: rgba(255, 173, 22, 0.1);
+    color: #faad14;
+    border-color: rgba(255, 173, 22, 0.3);
+}
+
+.shift3 {
+    background: rgba(146, 84, 222, 0.1);
+    color: #9254de;
+    border-color: rgba(146, 84, 222, 0.3);
+}
+
+.telegram {
+    color: var(--text-secondary);
+}
+
+.email {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 4px;
+}
+
+.paginationInfo {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.pagination {
+    display: flex;
+    gap: 8px;
+}
+
+.pageBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.pageBtn:hover:not(.disabled) {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.pageIndicator {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.pageActive {
+    background-color: var(--primary);
+    color: #000;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.emptyMsg {
+    padding: 48px !important;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-style: italic;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.tableActions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.actionBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover {
+    background-color: rgba(24, 144, 255, 0.1);
+    color: #1890ff;
+    border-color: rgba(24, 144, 255, 0.3);
+}
+
+.deleteBtn:hover {
+    background-color: rgba(255, 77, 79, 0.1);
+    color: #ff4d4f;
+    border-color: rgba(255, 77, 79, 0.3);
+}
+
+.scheduleGrid {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Buộc xếp hàng ngang */
+    gap: 4px;
+    min-width: 450px;
+    /* Đảm bảo đủ chỗ cho 7 ngày */
+    align-items: center;
+}
+
+.scheduleItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dayLabel {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .header {
+        gap: 12px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    /* Tabs scrollable */
+    .tabs {
+        overflow-x: auto;
+        padding-bottom: 4px;
+        gap: 16px;
+    }
+
+    .tab {
+        white-space: nowrap;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .searchWrapper {
+        max-width: 100%;
+    }
+
+    .searchInput {
+        width: 100%;
+    }
+
+    .actionBtns {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .filterBtn,
+    .addBtn {
+        flex: 1;
+        justify-content: center;
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    /* Table adjustments */
+    .tableWrapper {
+        border-radius: 12px;
+        margin-top: 12px;
+    }
+
+    .table {
+        min-width: 800px;
+        /* Horizontal scroll trigger */
+    }
+
+    .th,
+    .td {
+        padding: 12px;
+    }
+
+    /* Sticky first col */
+    .th:first-child,
+    .td:first-child {
+        position: sticky;
+        left: 0;
+        background-color: #141414;
+        z-index: 10;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Schedule Grid inside table */
+    .scheduleGrid {
+        min-width: unset;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .pagination {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "task2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:db": "concurrently \"npm run db\" \"npm run dev\"",
+    "db": "json-server --watch db.json --port 3000",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "deploy": "npm run build && firebase deploy",
+    "postinstall": "node patch-json-server.cjs"
+  },
+  "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
+    "concurrently": "^8.2.2",
+    "firebase": "^12.8.0",
+    "html2canvas": "^1.4.1",
+    "json-server": "^1.0.0-beta.5",
+    "lucide-react": "^0.300.0",
+    "papaparse": "^5.5.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-quill": "^2.0.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "firebase-tools": "^15.5.1",
+    "vite": "^5.0.8"
+  }
+}

@@ -1,0 +1,560 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal {
+    background-color: var(--bg-secondary);
+    width: 700px;
+    max-width: 95vw;
+    max-height: calc(100vh - 40px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.2s ease-out;
+    border: 1px solid var(--bg-tertiary);
+    overflow: hidden;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.header {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--bg-tertiary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+}
+
+.closeBtn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.body {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+    flex: 1;
+    position: relative;
+    padding-bottom: var(--spacing-lg);
+}
+
+.body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.body::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.formGroup label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.required {
+    color: var(--status-issue);
+    margin-left: 2px;
+}
+
+.input,
+.textarea {
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--bg-tertiary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-bg);
+}
+
+.warningBox {
+    background-color: #3b261e;
+    /* Brownish dark logic from screenshot? Or adjust to light */
+    /* Let's stick to Light Mode consistent logic: Warning Light BG */
+    background-color: #fff7e6;
+    border: 1px solid #ffbb96;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+}
+
+.warnIcon {
+    color: #fa8c16;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.warnContent {
+    font-size: 14px;
+    color: #595959;
+}
+
+.warnContent strong {
+    display: block;
+    color: #d46b08;
+    margin-bottom: 4px;
+}
+
+.warnContent a {
+    color: #1890ff;
+    text-decoration: underline;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.selectWrapper {
+    position: relative;
+}
+
+.select {
+    width: 100%;
+    padding: 10px 32px 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--bg-tertiary);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    appearance: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.selectIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.multiSelectContainer {
+    border: 1px solid var(--bg-tertiary);
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 42px;
+    position: relative;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.selectedChips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--bg-tertiary);
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 13px;
+    color: var(--text-primary);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chip img {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.chipRemove {
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.chipRemove:hover {
+    color: var(--text-primary);
+}
+
+.supportDropdown {
+    border-top: 1px solid var(--bg-tertiary);
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+.supportLabel {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.supportList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.supportItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    border: 1px solid var(--bg-tertiary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.supportItem:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--text-tertiary);
+}
+
+.supportItem img {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+
+.footer {
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--bg-tertiary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footerRight {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.btnSecondary {
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    background: none;
+    border: 1px solid var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.btnOutline {
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    background: none;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnOutline:hover {
+    background-color: var(--primary-bg);
+}
+
+.btnPrimary {
+    padding: 8px 24px;
+    border-radius: var(--radius-sm);
+    background-color: var(--primary);
+    border: 1px solid var(--primary);
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btnPrimary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+/* Confirmation Overlay */
+.confirmOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    z-index: 10;
+}
+
+.confirmModal {
+    background-color: var(--bg-secondary);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+}
+
+.confirmIcon {
+    width: 56px;
+    height: 56px;
+    background-color: #fff1f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff4d4f;
+    margin-bottom: 16px;
+}
+
+.confirmModal h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.confirmModal p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.confirmActions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.confirmActions button {
+    flex: 1;
+}
+
+/* Custom Date Picker Styles */
+.datePickerContainer {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+.dateDisplay {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dateDisplay:hover {
+    border-color: var(--primary);
+}
+
+.dateDisplayActive {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-bg);
+}
+
+.calendarIcon {
+    color: var(--text-tertiary);
+}
+
+.chevron {
+    margin-left: auto;
+    color: var(--text-tertiary);
+    transition: transform 0.2s;
+}
+
+.chevronRotated {
+    transform: rotate(180deg);
+}
+
+.calendarDropdown {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    width: 280px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xl);
+    padding: 16px;
+    z-index: 9999;
+    animation: fadeInCal 0.15s ease-out;
+}
+
+@keyframes fadeInCal {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.currentMonth {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.calNavBtn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calNavBtn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.calendarGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.dayOfWeek {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    text-align: center;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.dayCell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    cursor: default;
+}
+
+.dayActive {
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.dayActive:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.isToday {
+    background-color: var(--primary-bg);
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.isSelected {
+    background-color: var(--primary) !important;
+    color: #fff !important;
+    font-weight: 700;
+}
